@@ -60,7 +60,7 @@ export default function ProdcutDetails({params}:{params :{slug :string}}) {
                     {
                         product.countInStock !== 0 && (
                             <div className="card-actions justify-between  ">
-                                <AddToCart item={{...product,qty:0, color:'', size:''}}/>
+                                <AddToCart item ={{...product, qty:0 , color:'', size:''}}/>
                             </div>
                            
                         )

@@ -1,10 +1,36 @@
+
 import AddToCart from "@/components/products/AddToCart"
-import data from "@/lib/data"
+import { data } from "@/lib/data"
+import productService from "@/lib/services/productService"
+import { covertDocToObj } from "@/lib/utils"
 import Image from "next/image"
 import Link from "next/link"
 
-export default function ProdcutDetails({params}:{params :{slug :string}}) {
-    const product = data.Product.find((x)=>x.slug ===params.slug)
+
+export async function generateMetadata({
+    params,
+}:{
+    params: {slug :string}
+}){
+    const product = await productService.getBySlug(params.slug)
+    if(!product){
+        return {title : 'Product not found'}
+    }
+    return{
+        title : product.name,
+        description : product.description,
+    }
+}
+
+
+
+
+
+export default async function ProdcutDetails({params}
+    :{
+        params :{slug :string}
+    }) {
+    const product = await productService.getBySlug(params.slug)
     if(!product){
         return <div>Prodcut Not found</div>
     }
@@ -60,7 +86,7 @@ export default function ProdcutDetails({params}:{params :{slug :string}}) {
                     {
                         product.countInStock !== 0 && (
                             <div className="card-actions justify-between  ">
-                                <AddToCart item ={{...product, qty:0 , color:'', size:''}}/>
+                                <AddToCart item ={{...covertDocToObj(product), qty:0 , color:'', size:''}}/>
                             </div>
                            
                         )

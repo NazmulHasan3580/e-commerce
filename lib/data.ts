@@ -1,11 +1,25 @@
-import { Product } from '@/lib/models/ProductModel';
-import { describe } from 'node:test';
-const data = {
-    Product :[
+
+import bcrypt from 'bcryptjs'
+export const data = {
+    users :[
+        {
+            name : 'John',
+            email : 'John@gmail.com',
+            password : bcrypt.hashSync("1234"),
+            isAdmin :true,
+        },
+        {
+            name : 'Jahe',
+            email : 'Jahe@gmail.com',
+            password : bcrypt.hashSync("1234"),
+            isAdmin :false,
+        }
+    ],
+    Products :[
         {
             name : 'Free Shirt',
             slug :'free-shirt',
-            catagory: 'Shirts',
+            category: 'Shirts',
             image : '/images/shir1.jpg',
             price : 70,
             brand : "Nike",
@@ -14,12 +28,12 @@ const data = {
             countInStock : 20,
             description : "A popular Shirt",
             isFeatured : true,
-            banner : "/images/banner1.jfif"
+            banner : 'images/hello.jfif'
         },
         {
             name : 'Fit Shirt',
             slug :'Fit-shirt',
-            catagory: 'Shirts',
+            category: 'Shirts',
             image : '/images/shirt2.jpg',
             price : 90,
             brand : "Casic",
@@ -28,12 +42,12 @@ const data = {
             countInStock : 25,
             isFeatured : true,
             description : "A popular Shirt",
-            banner : "/images/banner2.jfif"
+            banner : '/images/banner1.jpg'
         },
         {
             name : 'Cool Shirt',
             slug :'Cool-shirt',
-            catagory: 'Shirts',
+            category: 'Shirts',
             image : '/images/shirt3.jpg',
             price : 80,
             brand : "Adidas",
@@ -42,12 +56,12 @@ const data = {
             countInStock : 18,
             isFeatured : true,
             description : "A popular Shirt",
-            banner : "/images/banner1.jfif"
+            banner : 'hello.jfif'
         },
         {
             name : 'Slim Shirt',
             slug :'Slim-shirt',
-            catagory: 'Shirts',
+            category: 'Shirts',
             image : '/images/shirt4.jpg',
             price : 75,
             brand : "Oliver",
@@ -56,8 +70,7 @@ const data = {
             countInStock : 22,
             isFeatured : true,
             description : "A popular Shirt",
-            banner : "/images/banner2.jfif"
+            banner : 'hello.jfif'
         },
         ]
 }
-export default  data

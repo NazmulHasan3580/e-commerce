@@ -11,9 +11,6 @@ const Header = () => {
           E-commers App
         </Link>
         <ul className='flex'>
-            <li>
-              <Link href="/cart" className='btn btn-ghost rounded-btn'>Cart</Link>
-            </li>
             <Menu/>
         </ul>
       </div>
@@ -21,5 +18,4 @@ const Header = () => {
    </header>
   )
 }
-
 export default Header
